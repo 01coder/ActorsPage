@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+<head>
+    <style type="text/css">
+        header {background-color:white;height:150px;padding:5px; border-bottom: thin solid gray}
+        h1#pageTitle {color:black;font-family:Impact;left:150px;top:50px;position:relative }
+        #srcdiv {height:60px;}
+        ul li {display:inline;padding-left: 30px}
+        ul li a:link{ text-decoration:none }
+        ul li a:hover{text-decoration: underline;color:hotpink}
+        #frame {max-width:750px;height:300px;background-color:white}
+        #poster {width:150px;min-height:200px;border:1px solid black;}
+        #side {float: left;width: 200px }
+        #headLine {border-bottom: thin solid blue}
+        #actorName {position: relative ;bottom: 20px}
+        #titl {left: 250px;position: relative;color: #46b1da;vertical-align: text-bottom ;top: 20px; }
+        #article{width: 600px;margin-left: 200px}
+        #details {position: relative ;top: 100px}
+        #nav {top:50px;position:relative;left:20%}
+        footer {background-color: #e3e2e2;height: 100px;border-top: 1px solid black}
+
+    </style>
+</head>
+<body>
+<header>
+    <h1 id="PageTitle">Actors</h1>
+    <div id="nav">
+        <ul class="nav nav-pills" id="div_selector">
+            <li><a href="javascript:chgDtls('biography')">Biography</a></li>
+            <li><a href="javascript:chgDtls('facts')">Facts</a></li>
+            <li><a href="javascript:chgDtls('movies')">Movies</a></li>
+
+        </ul>
+    </div>
+</header>
+<div id="srcdiv">
+    <span>choose an actor: </span>
+
+    <input id ="srcNam" type="text" name="Actor"/>
+    <button id="srcbtn" onclick="getActNam()">Search</button>
+</div>
+
+<div id="popUp" style="border: solid black 1px;width:200px;height:200px;position: absolute;background-color: white;display:none;">
+    <p id="rplcTxt">a</p>
+    <a href="javascript:closePop()" style=" position: absolute  ;right: 5px;bottom: 5px">Cancel</a>
+</div>
+
+
+
+
+
+<div id="frame">
+    <div id="side" >
+        <img id="poster" src="tom cruise.jpg" alt="Actor Photo"/>
+    </div>
+    <div id="article" >
+        <div id="headline" style="border-bottom : 1px solid blue">
+            <h1 id="actorName" style="float: left;  ">Tom Cruise</h1>
+            <h1 id="titl" >Biography</h1>
+        </div>
+        <div id="details" >
+            A-list actor and Scientologist Tom Cruise is the star of several box-office hits, including Risky Business, A Few Good Men, The Firm and Jerry Maguire.
+        </div>
+
+    </div>
+</div>
+
+<footer>
+
+</footer>
+
+<script type="text/javascript">
+
+    function getData(url)  // get json data from the middleware
+    {
+
+        // alert(url);
+        var rs;
+        var htp = new XMLHttpRequest();
+
+        htp.onreadystatechange = function () {
+            if (htp.readyState == 4 && htp.status == 200) { rs = htp.responseText; prnt(rs); }
+        };
+        htp.open("GET", url, true);
+        htp.send();
+
+
+        //alert(rs);
+        //return rs;
+    }
+    /*function showAct(actName) {
+     var str = "http://localhost:8888/?q="+actName;
+     var dt = getData(str);
+     var dt2 = json.pars(dt);
+     document.getElementById("details").innerHTML = dt.Biography;
+     document.getElementById("poster").src = dt.image;
+     }
+     function chgDtls(vdet) {
+     var x = "http://servername.jnodapp?q=" + document.getElementById("chos").value;
+     var dat = json.pars(getData(x));
+     switch (det){
+     case "biography":
+     document.getElementById("details").innerHTML = dat.biography;
+     break;
+     case "Facts":
+     document.getElementById("details").innerHTML = dat.facts;
+     break ;
+     case "movies":
+     document.getElementById("details").innerHTML = dat.movies;
+
+     }
+     }*/
+    function getActNam()  // get the search string string and call getData to get the data from the middleware
+    {
+
+        //var act = document.getElementById("srcNam").value;
+        //var url = "http://localhost:8888/?name="+act;
+        //var dt = getData(url);
+        //alert("OK");  //remove later
+        showPop();
+        //document .getElementById ("chos").innerHTML = dt;
+
+    }
+    function prnt(dat) {
+        alert(dat);
+    }
+    function showPop(event, text)  // display a popup window
+    {
+        //alert("OK");  //remove later
+        var el, x, y;
+
+        el = document.getElementById('popUp');
+        if (window.event) {
+            x = window.event.clientX + document.documentElement.scrollLeft
+                    + document.body.scrollLeft;
+            y = window.event.clientY + document.documentElement.scrollTop +
+                    +document.body.scrollTop;
+        }
+        else {
+            x = event.clientX + window.scrollX;
+            y = event.clientY + window.scrollY;
+        }
+        x -= 150; y -= 2;
+        y = y + 15;
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+        el.style.display = "block";
+        document.getElementById('rplcTxt').innerHTML = text;
+    }
+    function closePop() {
+        parent.document.getElementById("popUp").style.display = "none";
+    }
+
+</script>
+
+</body>
+</html>

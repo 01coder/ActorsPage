@@ -3,10 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Title</title>
-<head>
     <style type="text/css">
         header {background-color:white;height:150px;padding:5px; border-bottom: thin solid gray}
-        h1#pageTitle {color:black;font-family:Impact;left:150px;top:50px;position:relative }
+        #pageTitle {color:black;font-family:Impact,fantasy;left:150px;top:50px;position:relative }
         #srcdiv {height:60px;}
         ul li {display:inline;padding-left: 30px}
         ul li a:link{ text-decoration:none }
@@ -39,7 +38,7 @@
 <div id="srcdiv">
     <span>choose an actor: </span>
 
-    <input id ="srcNam" type="text" name="Actor"/>
+    <input id ="srcNam" type="text" title="Actor"/>
     <button id="srcbtn" onclick="getActNam()">Search</button>
 </div>
 

@@ -3,9 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/customStyle.css"/>
     <style type="text/css">
-        header {background-color:white;padding:5px; border-bottom: thin solid gray}
-        h1#pageTitle {color:black;font-family:Impact,fantasy;left:150px;top:50px;position:relative }
+        header {border-bottom: thin solid gray;height:150px;}
+        #title {position: relative;top:50px;}
+        h1#pageTitle {color:black;font-family:Impact,fantasy;left:150px;position:relative }
         #srcdiv {}
 		#srcNam {width:200px}
         ul li {display:inline;padding-left: 25px}
@@ -20,31 +23,59 @@
         #actorName {position: relative ;bottom: 20px}
         #titl {left: 250px;position: relative;color: #46b1da;vertical-align: text-bottom ;top: 20px; }
         #details {position: relative ;}
-        nav {position:relative;left:20%}
+        #subNav {position:relative;left:20%}
         footer {background-color: #e3e2e2;height: 100px;border-top: 1px solid black}
 
     </style>
 </head>
 <body>
-<header>
-    <h1 id="PageTitle">Actors</h1>
-	<div id="srcdiv">
-    	 <span>choose an actor: </span>
-    	 <input id ="srcNam" type="text" title="Actor"/>
-    	 <button id="srcbtn" onclick="getActNam()">Search</button>
-	</div>
-</header>
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Your Favorite Movie Tracker </a>
+                </div>
+                <div class="btn-group">
+                    <a role="button" class="btn btn-default" href="https://github.com/dqsust/Elwaleed-moviesHomePage">
+                        Home
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" href="https://github.com/01coder/ActorsPage">
+                        Actors
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" href="https://github.com/01coder/MovieOverview">
+                        Overview
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div id="title">
+            <h1 id="PageTitle">Actors</h1>
+            <div id="srcdiv">
+                <span>choose an actor: </span>
+                <input id ="srcNam" type="text" title="Actor"/>
+                <button id="srcbtn" onclick="getActNam()">Search</button>
+            </div>
+        </div>
+    </header>
 		 <div id="popUp" style="border: solid black 1px;width:320px;height:240px;position: absolute;background-color:white;display:none;z-index:1">
     	 	  <p id="rplcTxt">a</p>
     	 	  <a href="javascript:closePop()" style=" position: absolute  ;right: 5px;bottom: 5px">Cancel</a>
 		 </div>
-	<nav>
-        <ul id="navList">
-            <li><a href="javascript:chgDtls('overview')">Overview</a></li>
-			<li><a href="javascript:chgDtls('biography')">Biography</a></li>
-            <li><a href="javascript:chgDtls('facts')">Facts</a></li>
-            <li><a href="javascript:chgDtls('movies')">Movies</a></li>
-        </ul>
+    <nav id="content_navigation" >
+        <div class="container">
+            <div id="nav_header">
+                <ul class="nav nav-pills" id="div_selector">
+                    <li role="presentation" class="active nav_custom_color"><a href="javascript:chgDtls('overview')">Overview</a></li>
+                    <li role="presentation"><a href="javascript:chgDtls('biography')">Biography</a></li>
+                    <li role="presentation"><a href="javascript:chgDtls('facts')">Facts</a></li>
+                    <li role="presentation"><a href="javascript:chgDtls('movies')">Movies</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 	<div id="frame">
     	 <div id="side" >
@@ -66,9 +97,6 @@
  <div>
      <a href="http://validator.w3.org/check?uri=referer">
   	 <img width="88" height="31" alt="Valid XHTML 1.0!" src="http://www.w3.org/Icons/valid-xhtml10"/>
-    </a>
-    <a href="http://jigsaw.w3.org/css-validator/check/referer">
-        <img style="width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
     </a>
 </div>
 </footer>
